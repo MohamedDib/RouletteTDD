@@ -1,14 +1,36 @@
-import org.junit.Test;
+import java.util.Random;
 
 public class Roulette {
 
-    public Roulette(RouletteService rService) {
+
+    private final RouletteService rService;
+
+    private boolean isItSpinning = false;
+
+    private long spinDuration;
+
+    private long currentMs = 0;
+
+    private final Random rand = new Random();
+
+    public Roulette(final RouletteService rService) {
+        this.rService = rService;
     }
 
 
-    void spin(int i) {
+    void spin(final long spinForMs) {
+        this.isItSpinning = true;
+        this.spinDuration = spinForMs;
     }
 
-    public void stopAtTime(int i) {
+    void stopAtTime(final long timeMs) {
+        currentMs = timeMs;
+        if (isItSpinning && currentMs >= spinDuration)
+        {
+            isItSpinning = false;
+            final int location = rand.nextInt(37);
+            this.rService.stopSpiningAtLocation(location);
+        }
     }
+
 }

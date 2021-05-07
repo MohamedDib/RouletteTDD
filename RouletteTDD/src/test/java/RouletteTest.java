@@ -1,7 +1,6 @@
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoSettings;
 
 import static org.mockito.Mockito.*;
 
@@ -11,7 +10,7 @@ public class RouletteTest {
     RouletteService rService;
 
     @Test
-    void Stopped20SAfterSpin() {
+    void testStopingSpinAfter20s() {
 
         Roulette r = new Roulette(rService);
         // Start spining the roulette
@@ -21,6 +20,8 @@ public class RouletteTest {
 
         verify(rService).stopSpiningAtLocation(anyInt());
     }
+
+
 
 
 }
