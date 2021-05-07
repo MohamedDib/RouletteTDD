@@ -21,6 +21,19 @@ public class RouletteTest {
         verify(rService).stopSpiningAtLocation(anyInt());
     }
 
+    // Test the ball position when the roulette is stopped
+    @Test
+    public void testBallBallPositionWhenRouletteStoped() {
+
+        Roulette r = new Roulette(rService);
+
+        r.spin(20000);
+        
+        r.stopAtTime(20000);
+
+        verify(rService, times(1)).stopSpiningAtLocation(anyInt());
+    }
+
 
 
 

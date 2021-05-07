@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Roulette {
 
-
     private final RouletteService rService;
 
     private boolean isItSpinning = false;
